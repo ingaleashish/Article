@@ -15,7 +15,7 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.MyApplication;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.ArticleApplication;
 
 public class RetrofitRequest {
 
@@ -50,7 +50,7 @@ public class RetrofitRequest {
     }
 
     private static Cache cache(){
-        return new Cache(new File(MyApplication.getInstance().getCacheDir(),"someIdentifier"), cacheSize);
+        return new Cache(new File(ArticleApplication.getInstance().getCacheDir(),"someIdentifier"), cacheSize);
     }
 
     /**
@@ -66,7 +66,7 @@ public class RetrofitRequest {
                 Request request = chain.request();
 
                 // prevent caching when network is on. For that we use the "networkInterceptor"
-                if (!MyApplication.hasNetwork()) {
+                if (!ArticleApplication.hasNetwork()) {
                     CacheControl cacheControl = new CacheControl.Builder()
                             .maxStale(7, TimeUnit.DAYS)
                             .build();

@@ -9,9 +9,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-public class MyApplication extends Application {
+public class ArticleApplication extends Application {
 
-    private static MyApplication instance;
+    private static ArticleApplication instance;
 
     @Override
     public void onCreate() {
@@ -22,7 +22,7 @@ public class MyApplication extends Application {
         }
     }
 
-    public static MyApplication getInstance(){
+    public static ArticleApplication getInstance(){
         return instance;
     }
 
