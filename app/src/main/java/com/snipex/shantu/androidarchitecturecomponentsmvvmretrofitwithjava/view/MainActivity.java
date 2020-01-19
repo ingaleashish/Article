@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.ArticleAdapter;
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article;
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view_model.ArticleViewModel;
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.viewmodel.ArticleViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private RecyclerView my_recycler_view;
-    private ProgressBar progress_circular_article;
+    private RecyclerView myRecyclerView;
+    private ProgressBar progressCircularArticle;
     private LinearLayoutManager layoutManager;
     private ArticleAdapter adapter;
     private ArrayList<Article> articleArrayList = new ArrayList<>();
@@ -43,20 +43,20 @@ public class MainActivity extends AppCompatActivity {
      * @param @null
      */
     private void initialization() {
-        progress_circular_article = (ProgressBar) findViewById(R.id.progress_circular_movie_article);
-        my_recycler_view = (RecyclerView) findViewById(R.id.my_recycler_view);
+        progressCircularArticle = (ProgressBar) findViewById(R.id.progress_circular_movie_article);
+        myRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(MainActivity.this);
-        my_recycler_view.setLayoutManager(layoutManager);
+        myRecyclerView.setLayoutManager(layoutManager);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        my_recycler_view.setHasFixedSize(true);
+        myRecyclerView.setHasFixedSize(true);
 
         // adapter
         adapter = new ArticleAdapter(MainActivity.this, articleArrayList);
-        my_recycler_view.setAdapter(adapter);
+        myRecyclerView.setAdapter(adapter);
 
         // View Model
         articleViewModel = ViewModelProviders.of(this).get(ArticleViewModel.class);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         articleViewModel.getArticleResponseLiveData().observe(this, articleResponse -> {
             if (articleResponse != null) {
                 MainActivity.this.setTitle(articleResponse.getStatus());
-                progress_circular_article.setVisibility(View.GONE);
+                progressCircularArticle.setVisibility(View.GONE);
                 List<Article> articles = articleResponse.getArticles();
                 articleArrayList.addAll(articles);
                 adapter.notifyDataSetChanged();

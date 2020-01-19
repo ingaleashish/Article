@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view_model;
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
