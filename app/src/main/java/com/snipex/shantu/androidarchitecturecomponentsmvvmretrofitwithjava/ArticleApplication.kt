@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view
+package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava
 
 /**
  * Created by Ashish Ingale
@@ -7,7 +7,6 @@ package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkInfo
 
 class ArticleApplication : Application() {
 
@@ -16,7 +15,7 @@ class ArticleApplication : Application() {
             val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
             val activeNetwork = cm.activeNetworkInfo
-            return activeNetwork != null && activeNetwork.isConnectedOrConnecting
+            return activeNetwork != null && activeNetwork.isConnected
         }
 
     override fun onCreate() {
