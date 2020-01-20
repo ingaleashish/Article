@@ -11,19 +11,24 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.ArticleAdapter
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.viewmodel.ArticleViewModel
 import java.util.ArrayList
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
-class ArticleFragment : Fragment() {
+
+
+
+
+class ArticleFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
 
     private var myRecyclerView: RecyclerView? = null
-    private var progressCircularArticle: ProgressBar? = null
+   // private var progressCircularArticle: ProgressBar? = null
     private var layoutManager: LinearLayoutManager? = null
     private var adapter: ArticleAdapter? = null
     private val articleArrayList = ArrayList<Article>()
+    var mSwipeRefreshLayout: SwipeRefreshLayout? = null
     internal lateinit var articleViewModel: ArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +38,29 @@ class ArticleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        var rootView = inflater.inflate(R.layout.fragment_article, container, false)
+        var rootView = inflater.inflate(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.layout.fragment_article, container, false)
         initialization(rootView)
 
         getArticles()
+        // SwipeRefreshLayout
+        mSwipeRefreshLayout = rootView.findViewById(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.id.swipeContainer) as SwipeRefreshLayout
+        mSwipeRefreshLayout!!.setOnRefreshListener(this)
+        mSwipeRefreshLayout!!.setColorSchemeResources(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark)
+
+
+        /**
+         * Showing Swipe Refresh animation on activity create
+         * As animation won't start on onCreate, post runnable is used
+         */
+        /*mSwipeRefreshLayout!!.post(Runnable {
+            mSwipeRefreshLayout!!.setRefreshing(true)
+            // Fetching data from server
+            getArticles()
+        })*/
+
         return rootView
     }
 
@@ -46,8 +70,8 @@ class ArticleFragment : Fragment() {
      * @param @null
      */
     private fun initialization(rootView: View) {
-        progressCircularArticle = rootView.findViewById<View>(R.id.progress_circular_movie_article) as ProgressBar
-        myRecyclerView = rootView.findViewById<View>(R.id.my_recycler_view) as RecyclerView
+       // progressCircularArticle = rootView.findViewById<View>(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.id.progress_circular_movie_article) as ProgressBar
+        myRecyclerView = rootView.findViewById<View>(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.id.my_recycler_view) as RecyclerView
 
         // use a linear layout manager
         layoutManager = LinearLayoutManager(requireContext())
@@ -74,12 +98,18 @@ class ArticleFragment : Fragment() {
         articleViewModel.articleResponseLiveData.observe(this, Observer { articleResponse ->
             if (articleResponse != null) {
                 activity?.setTitle(articleResponse.status)
-                progressCircularArticle!!.visibility = View.GONE
+               // progressCircularArticle!!.visibility = View.GONE
                 val articles = articleResponse.articles
                 articleArrayList.addAll(articles!!)
                 adapter!!.notifyDataSetChanged()
+                mSwipeRefreshLayout?.setRefreshing(false);
+
             }
         })
+    }
+
+    override fun onRefresh() {
+        getArticles()
     }
 
 
