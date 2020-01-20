@@ -1,4 +1,4 @@
-# Android-Architecture-Components-MVVM-Retrofit-JAVA
+# Android-Architecture-Components-MVVM-Retrofit-Kotlin
 This repository contains Android Architecture Components ( LiveData , View Model and MVVM with retrofit for consuming rest api ) 
 
 ## About This Project
