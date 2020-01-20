@@ -50,17 +50,6 @@ class ArticleFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
                 android.R.color.holo_orange_dark,
                 android.R.color.holo_blue_dark)
 
-
-        /**
-         * Showing Swipe Refresh animation on activity create
-         * As animation won't start on onCreate, post runnable is used
-         */
-        /*mSwipeRefreshLayout!!.post(Runnable {
-            mSwipeRefreshLayout!!.setRefreshing(true)
-            // Fetching data from server
-            getArticles()
-        })*/
-
         return rootView
     }
 
