@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
-import com.bumptech.glide.Glide
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article
 
 import java.util.ArrayList
+import com.squareup.picasso.Picasso
+
+
+
+
 
 class ArticleAdapter(private val context: Context, internal var articleArrayList: ArrayList<Article>) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
@@ -25,10 +29,10 @@ class ArticleAdapter(private val context: Context, internal var articleArrayList
         val article = articleArrayList[i]
         viewHolder.tvTitle.text = article.title
         viewHolder.tvDescription.text = article.description
-        Glide.with(context)
-                .load(article.urlToImage)
-                .error(Glide.with(viewHolder.imgViewCover).load(R.drawable.ic_launcher_background))
-                .into(viewHolder.imgViewCover)
+        val aUrl = article.urlToImage?.replace("http", "https")
+        Picasso.with(context).load(aUrl).placeholder(R.mipmap.ic_launcher).into(viewHolder.imgViewCover)
+
+
     }
 
     override fun getItemCount(): Int {

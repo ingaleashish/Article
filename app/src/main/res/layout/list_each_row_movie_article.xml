@@ -4,12 +4,11 @@
     android:layout_height="wrap_content"
     android:background="@android:color/white">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgViewCover"
         android:layout_width="120dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="5dp"
-        android:scaleType="centerCrop" />
+        android:layout_marginBottom="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
