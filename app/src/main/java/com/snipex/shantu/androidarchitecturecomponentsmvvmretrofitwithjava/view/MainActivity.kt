@@ -1,22 +1,18 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import androidx.annotation.NonNull
+import androidx.annotation.Nullable
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.view.View
-import android.widget.ProgressBar
-import androidx.lifecycle.Observer
-
+import androidx.test.espresso.IdlingResource
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.ArticleAdapter
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.viewmodel.ArticleViewModel
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.espresso.SimpleIdlingResource
 
-import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
+    // The Idling Resource which will be null in production.
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,5 +23,17 @@ class MainActivity : AppCompatActivity() {
     companion object {
 
         private val TAG = MainActivity::class.java!!.getSimpleName()
+        @Nullable
+        var mIdlingResource: SimpleIdlingResource? = null
     }
+
+    @VisibleForTesting
+    @NonNull
+    fun getIdlingResource(): IdlingResource {
+        if (mIdlingResource == null) {
+            mIdlingResource = SimpleIdlingResource()
+        }
+        return mIdlingResource as SimpleIdlingResource
+    }
+
 }

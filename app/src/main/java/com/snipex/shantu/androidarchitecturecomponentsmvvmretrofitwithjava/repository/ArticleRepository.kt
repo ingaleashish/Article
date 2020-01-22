@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import android.util.Log
+import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.espresso.SimpleIdlingResource
 
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.ArticleResponse
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ApiRequest
@@ -22,6 +23,7 @@ class ArticleRepository {
     }
 
     fun getMovieArticles(query: String, key: String): LiveData<ArticleResponse> {
+
         val data = MutableLiveData<ArticleResponse>()
         apiRequest.movieArticles
                 .enqueue(object : Callback<ArticleResponse> {
@@ -73,7 +75,4 @@ class ArticleRepository {
         return data
     }
 
- /*   companion object {
-        private val TAG = ArticleRepository::class.java!!.getSimpleName()
-    }*/
 }

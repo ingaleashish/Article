@@ -8,16 +8,6 @@ class ArticleResponse {
     @SerializedName("title")
     @Expose
     var status: String? = null
-    /* @SerializedName("title")
-    @Expose
-    private Integer totalResults;*/
-    /* public Integer getTotalResults() {
-        return totalResults;
-    }
-
-    public void setTotalResults(Integer totalResults) {
-        this.totalResults = totalResults;
-    }*/
 
     @SerializedName("rows")
     @Expose

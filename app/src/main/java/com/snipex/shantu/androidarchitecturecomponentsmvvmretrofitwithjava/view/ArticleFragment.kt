@@ -1,30 +1,25 @@
 package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.adapter.ArticleAdapter
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.model.Article
 import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.viewmodel.ArticleViewModel
-import java.util.ArrayList
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import java.util.*
 
 
-
-
-
-class ArticleFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
+class ArticleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private var myRecyclerView: RecyclerView? = null
-   // private var progressCircularArticle: ProgressBar? = null
+    // private var progressCircularArticle: ProgressBar? = null
     private var layoutManager: LinearLayoutManager? = null
     private var adapter: ArticleAdapter? = null
     private val articleArrayList = ArrayList<Article>()
@@ -59,7 +54,7 @@ class ArticleFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
      * @param @null
      */
     private fun initialization(rootView: View) {
-       // progressCircularArticle = rootView.findViewById<View>(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.id.progress_circular_movie_article) as ProgressBar
+        // progressCircularArticle = rootView.findViewById<View>(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.id.progress_circular_movie_article) as ProgressBar
         myRecyclerView = rootView.findViewById<View>(com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R.id.my_recycler_view) as RecyclerView
 
         // use a linear layout manager
@@ -84,15 +79,17 @@ class ArticleFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
      * @param @null
      */
     private fun getArticles() {
+        articleArrayList.removeAll(articleArrayList)
+        MainActivity.mIdlingResource?.setIdleState(true)
         articleViewModel.articleResponseLiveData.observe(this, Observer { articleResponse ->
             if (articleResponse != null) {
                 activity?.setTitle(articleResponse.status)
-               // progressCircularArticle!!.visibility = View.GONE
+                // progressCircularArticle!!.visibility = View.GONE
                 val articles = articleResponse.articles
                 articleArrayList.addAll(articles!!)
                 adapter!!.notifyDataSetChanged()
                 mSwipeRefreshLayout?.setRefreshing(false);
-
+                MainActivity.mIdlingResource?.setIdleState(true)
             }
         })
     }

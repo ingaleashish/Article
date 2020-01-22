@@ -27,7 +27,7 @@ class ArticleAdapter(private val context: Context, internal var articleArrayList
         viewHolder.tvDescription.text = article.description
         Glide.with(context)
                 .load(article.urlToImage)
-                /*.error(Glide.with(viewHolder.imgViewCover).load(R.drawable.ic_launcher_background))*/
+                .error(Glide.with(viewHolder.imgViewCover).load(R.drawable.ic_launcher_background))
                 .into(viewHolder.imgViewCover)
     }
 
