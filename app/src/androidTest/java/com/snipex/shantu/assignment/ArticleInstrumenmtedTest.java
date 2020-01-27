@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava;
+package com.snipex.shantu.assignment;
 
 import android.view.View;
 
@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.IdlingResource;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.matcher.BoundedMatcher;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view.MainActivity;
+import com.snipex.shantu.assignment.view.MainActivity;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

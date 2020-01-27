@@ -1,19 +1,16 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.repository
+package com.snipex.shantu.assignment.repository
 
 import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import android.util.Log
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.espresso.SimpleIdlingResource
-
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.response.ArticleResponse
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.ApiRequest
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit.RetrofitRequest
-import java.net.HttpURLConnection
-
+import com.snipex.shantu.assignment.response.ArticleResponse
+import com.snipex.shantu.assignment.retrofit.ApiRequest
+import com.snipex.shantu.assignment.retrofit.RetrofitRequest
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.HttpURLConnection
 
 class ArticleRepository {
     private val apiRequest: ApiRequest
@@ -22,7 +19,7 @@ class ArticleRepository {
         apiRequest = RetrofitRequest.retrofitInstance!!.create(ApiRequest::class.java!!)
     }
 
-    fun getMovieArticles(query: String, key: String): LiveData<ArticleResponse> {
+    fun getArticlesList(): LiveData<ArticleResponse> {
 
         val data = MutableLiveData<ArticleResponse>()
         apiRequest.movieArticles

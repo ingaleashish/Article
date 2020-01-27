@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.view
+package com.snipex.shantu.assignment.view
 
 import android.os.Bundle
 import androidx.annotation.NonNull
@@ -6,8 +6,8 @@ import androidx.annotation.Nullable
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.IdlingResource
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.R
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.espresso.SimpleIdlingResource
+import com.snipex.shantu.assignment.R
+import com.snipex.shantu.assignment.espresso.SimpleIdlingResource
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        private val TAG = MainActivity::class.java!!.getSimpleName()
         @Nullable
         var mIdlingResource: SimpleIdlingResource? = null
     }

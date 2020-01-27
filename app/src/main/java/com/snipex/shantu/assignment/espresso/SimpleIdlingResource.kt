@@ -1,6 +1,5 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.espresso
+package com.snipex.shantu.assignment.espresso
 
-import androidx.annotation.Nullable
 import androidx.test.espresso.IdlingResource
 import java.util.concurrent.atomic.AtomicBoolean
 

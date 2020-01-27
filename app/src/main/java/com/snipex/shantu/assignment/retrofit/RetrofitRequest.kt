@@ -1,12 +1,8 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.retrofit
+package com.snipex.shantu.assignment.retrofit
 
 import android.util.Log
-
-import com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava.ArticleApplication
-
-import java.io.File
-import java.util.concurrent.TimeUnit
-
+import com.google.gson.GsonBuilder
+import com.snipex.shantu.assignment.ArticleApplication
 import okhttp3.Cache
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -14,6 +10,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.File
+import java.util.concurrent.TimeUnit
+
 
 object RetrofitRequest {
 
@@ -25,7 +24,7 @@ object RetrofitRequest {
 
     // cache size mention here
     private val cacheSize = (5 * 1024 * 1024).toLong() // 5 MB
-
+    var gson = GsonBuilder().serializeNulls().create()
     // for cache response
     val retrofitInstance: Retrofit?
         get() {
@@ -33,7 +32,7 @@ object RetrofitRequest {
                 retrofit = retrofit2.Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .client(okHttpClient())
-                        .addConverterFactory(GsonConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create(gson))
                         .build()
             }
             return retrofit
@@ -91,7 +90,7 @@ object RetrofitRequest {
             val response = chain.proceed(chain.request())
 
             val cacheControl = CacheControl.Builder()
-                    .maxAge(1, TimeUnit.MINUTES)
+                    .maxAge(0, TimeUnit.SECONDS)
                     .build()
 
             response.newBuilder()

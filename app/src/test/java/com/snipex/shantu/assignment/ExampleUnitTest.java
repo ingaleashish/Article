@@ -1,4 +1,4 @@
-package com.snipex.shantu.androidarchitecturecomponentsmvvmretrofitwithjava;
+package com.snipex.shantu.assignment;
 
 import org.junit.Test;
 
