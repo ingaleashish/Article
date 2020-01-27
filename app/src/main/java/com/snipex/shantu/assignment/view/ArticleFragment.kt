@@ -1,9 +1,11 @@
 package com.snipex.shantu.assignment.view
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -79,6 +81,7 @@ class ArticleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
      *
      * @param @null
      */
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun getArticles() {
         if (UtilFunction.isOnline(requireContext())) {
             articleArrayList.removeAll(articleArrayList)
@@ -88,6 +91,7 @@ class ArticleFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     activity?.setTitle(articleResponse.status)
                     val articles = articleResponse.articles
                     articleArrayList.addAll(articles!!)
+                    articleArrayList.removeIf { article -> article.title == null && article.description == null && article.urlToImage == null}
                     adapter!!.notifyDataSetChanged()
                     mSwipeRefreshLayout?.setRefreshing(false);
                     MainActivity.mIdlingResource?.setIdleState(true)
