@@ -1,7 +1,7 @@
 package com.snipex.shantu.assignment.retrofit
 
 import android.util.Log
-import com.google.gson.GsonBuilder
+import com.google.gson.GsonBuilder 
 import com.snipex.shantu.assignment.ArticleApplication
 import okhttp3.Cache
 import okhttp3.CacheControl
