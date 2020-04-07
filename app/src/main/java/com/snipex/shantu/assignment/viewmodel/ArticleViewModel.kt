@@ -13,7 +13,7 @@ class ArticleViewModel(application: Application) : AndroidViewModel(application)
     val articleResponseLiveData: LiveData<ArticleResponse>
 
     init {
-
+  
         articleRepository = ArticleRepository()
         this.articleResponseLiveData = articleRepository.getArticlesList()
     }
