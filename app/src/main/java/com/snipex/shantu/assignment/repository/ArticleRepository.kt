@@ -18,7 +18,7 @@ class ArticleRepository {
     init {
         apiRequest = RetrofitRequest.retrofitInstance!!.create(ApiRequest::class.java!!)
     }
-
+ 
     fun getArticlesList(): LiveData<ArticleResponse> {
 
         val data = MutableLiveData<ArticleResponse>()
