@@ -1,7 +1,7 @@
 package com.snipex.shantu.assignment.espresso
 
 import androidx.test.espresso.IdlingResource
-import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicBoolean 
 
 /**
  * Created by Ashish Ingale on 22-01-2020.
