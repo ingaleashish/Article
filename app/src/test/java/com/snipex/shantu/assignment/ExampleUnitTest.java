@@ -1,6 +1,6 @@
 package com.snipex.shantu.assignment;
 
-import org.junit.Test;
+import org.junit.Test; 
 
 import static org.junit.Assert.*;
 
