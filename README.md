@@ -3,7 +3,7 @@ This repository contains Android Architecture Components ( LiveData , View Model
  
 ## About This Project
 
-In this project we will build a  artcle app using android architecture components <B>( LiveData and ViewModel )</B> usning <B>MVVM</B> pattern by the help of [Retrofit](https://square.github.io/retrofit/) for consuming rest api data from [Article Api](https://dl.dropboxusercontent.com/s)
+In this project we will build a  artcle app using android architecture components <B>( LiveData and ViewModel )</B> usning <B>MVVM</B> pattern by the help of [Retrofit](https://square.github.io/retrofit/) for consuming rest api data from 
 
 ## App Features
 * Show list of article 
