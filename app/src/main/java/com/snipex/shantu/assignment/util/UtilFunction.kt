@@ -1,7 +1,7 @@
 package com.snipex.shantu.assignment.util
 
 import android.content.Context
-import android.net.ConnectivityManager
+import android.net.ConnectivityManager 
 
 /**
  * Created by Ashish Ingale on 27-01-2020.
