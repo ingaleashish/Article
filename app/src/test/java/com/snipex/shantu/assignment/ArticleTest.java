@@ -1,6 +1,6 @@
 package com.snipex.shantu.assignment;
 
-import com.snipex.shantu.assignment.response.ArticleResponse;
+import com.snipex.shantu.assignment.response.ArticleResponse; 
 import com.snipex.shantu.assignment.retrofit.ApiRequest;
 
 import org.junit.Test;
