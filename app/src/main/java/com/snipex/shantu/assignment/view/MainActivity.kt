@@ -1,7 +1,7 @@
 package com.snipex.shantu.assignment.view
 
 import android.os.Bundle
-import androidx.annotation.NonNull
+import androidx.annotation.NonNull 
 import androidx.annotation.Nullable
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
