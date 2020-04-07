@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import com.snipex.shantu.assignment.model.Article
 
 class ArticleResponse {
-    @SerializedName("title")
+    @SerializedName("title") 
     @Expose
     var status: String? = null
 
