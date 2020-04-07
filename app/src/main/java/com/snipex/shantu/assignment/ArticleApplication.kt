@@ -4,7 +4,7 @@ package com.snipex.shantu.assignment
  * Created by Ashish Ingale
  */
 
-import android.app.Application
+import android.app.Application 
 import android.content.Context
 import android.net.ConnectivityManager
 
